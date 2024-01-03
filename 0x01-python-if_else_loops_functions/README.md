@@ -12,7 +12,7 @@ This collection of Python tasks is part of the ALX Software Engineering curricul
 To get started with these tasks, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/Y4SS11N3/alx-higher_level_programming/tree/master/0x01-python-if_else_loops_functions
+git clone https://github.com/Y4SS11N3/alx-higher_level_programming
 ```
 
 ## Usage

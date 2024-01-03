@@ -12,7 +12,7 @@ This collection of Python tasks is a key part of the ALX Software Engineering cu
 To get started with these tasks, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/Y4SS11N3/alx-higher_level_programming/tree/master/0x00-python-hello_world
+git clone https://github.com/Y4SS11N3/alx-higher_level_programming
 ```
 
 ## Usage
