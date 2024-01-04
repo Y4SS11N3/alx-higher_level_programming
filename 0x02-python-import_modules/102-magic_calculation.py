@@ -1,4 +1,4 @@
-from magic_calculation_102 import add, sub
+from magic_calculation_102 import add as add, sub as sub
 
 def magic_calculation(a, b):
     if a < b:
