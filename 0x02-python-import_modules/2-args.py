@@ -9,7 +9,7 @@ if __name__ == "__main__":
     elif cnt == 1:
         print("1 argument")
     else:
-        print("{} argumentis:".format(cnt))
+        print("{} arguments:".format(cnt))
     for c in range(cnt):
         print("{}: {}".format(c +1, sys.argv[c +1]))
 
