@@ -1,10 +1,8 @@
 #!/usr/bin/python3
+import sys
+
 if __name__ == "__main__":
-
-    import sys
-
-    cnt = len(sys.argv) -1
-
+    cnt = len(sys.argv) - 1
     if cnt == 0:
         print("0")
     else:
