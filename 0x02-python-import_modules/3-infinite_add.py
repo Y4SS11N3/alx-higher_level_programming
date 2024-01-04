@@ -12,4 +12,3 @@ if __name__ == "__main__":
         for c in range(1, cnt + 1):
             nm += int(sys.argv[c])
         print("{}".format(int(nm)))
-
