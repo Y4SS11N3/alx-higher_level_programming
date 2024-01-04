@@ -1,5 +1,5 @@
 #!/usr/bin/pyhton3
-from magic_calculation_102 import add as add, sub as sub
+from magic_calculation_102 import add, sub
 
 def magic_calculation(a, b):
     if a < b:
