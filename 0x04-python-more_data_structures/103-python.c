@@ -15,7 +15,7 @@ void print_python_list(PyObject *p)
 	if (!PyList_Check(p))
 	{
 		printf("  [ERROR] Invalid List Object\n");
-		return (void);
+		return;
 	}
 
 	list = (PyListObject *)p;
@@ -46,7 +46,7 @@ void print_python_bytes(PyObject *p)
 	if (!PyBytes_Check(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
-		return (void);
+		return;
 	}
 
 	bytes = (PyBytesObject *)p;
