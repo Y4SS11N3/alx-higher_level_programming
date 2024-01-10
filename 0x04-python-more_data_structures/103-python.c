@@ -1,15 +1,19 @@
 #include <Python.h>
 #include <stdio.h>
+#include <object.h>
+#include <listobject.h>
+#include <bytesobject.h>
 
 /**
- * print_python_list - Prints information about Python list objects.
- * @p: A PyObject pointer representing the Python list to be printed.
+ * print_python_list - Prints basic info about Python lists
+ * @p: PyObject pointer representing a Python list
  */
 void print_python_list(PyObject *p)
 {
-	unsigned long int size, allocated;
-	PyObject *item; /* item: current list item */
-	PyListObject *list; /* list: casted PyObject to PyListObject */
+	PyListObject *list;
+	PyObject *item;
+	const char *type_name;
+	ssize_t i, size;
 
 	printf("[*] Python list info\n");
 	if (!PyList_Check(p))
@@ -19,28 +23,28 @@ void print_python_list(PyObject *p)
 	}
 
 	list = (PyListObject *)p;
-	size = PyList_GET_SIZE(p);
-	allocated = list->allocated;
+	size = Py_SIZE(p);
+	printf("[*] Size of the Python List = %zu\n", size);
+	printf("[*] Allocated = %zu\n", list->allocated);
 
-	printf("[*] Size of the Python List = %lu\n", size);
-	printf("[*] Allocated = %lu\n", allocated);
-
-	for (unsigned int i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
-		item = PyList_GetItem(p, i);
-		printf("Element %u: %s\n", i, Py_TYPE(item)->tp_name);
+		item = list->ob_item[i];
+		type_name = item->ob_type->tp_name;
+		printf("Element %zu: %s\n", i, type_name);
 	}
 }
 
 /**
- * print_python_bytes - Prints information about Python byte objects.
- * @p: A PyObject pointer representing the Python bytes object.
+ * print_python_bytes - Prints basic info about Python byte objects
+ * @p: PyObject pointer representing the Python byte object
  */
 void print_python_bytes(PyObject *p)
 {
-	PyBytesObject *bytes; /* bytes: casted PyObject to PyBytesObject */
-	unsigned long int size; /* size: size of the byte object */
-	char *str; /* str: string representation of the byte object */
+	PyBytesObject *bytes;
+	char *str;
+	unsigned long size;
+	unsigned int i;
 
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
@@ -50,14 +54,14 @@ void print_python_bytes(PyObject *p)
 	}
 
 	bytes = (PyBytesObject *)p;
-	size = PyBytes_Size(p);
+	size = Py_SIZE(p);
 	str = bytes->ob_sval;
 
 	printf("  size: %lu\n", size);
 	printf("  trying string: %s\n", str);
 	printf("  first %lu bytes:", size < 10 ? size + 1 : 10);
 
-	for (unsigned int i = 0; i < size && i < 10; i++)
+	for (i = 0; i < size && i < 10; i++)
 	{
 		printf(" %02x", str[i] & 0xff);
 	}
