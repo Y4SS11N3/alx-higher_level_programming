@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a class Square with a getter and setter for its size."""
 
+
 class Square:
     """Represents a square."""
 
