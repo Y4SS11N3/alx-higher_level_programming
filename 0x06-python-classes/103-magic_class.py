@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """MagicClass replicating a specific bytecode structure."""
 
-
 import math
+
 
 class MagicClass:
     """Circle representation for area and circumference calculations."""
