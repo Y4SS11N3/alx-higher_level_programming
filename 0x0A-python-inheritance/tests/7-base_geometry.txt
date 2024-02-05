@@ -1,0 +1,69 @@
+# Test Case 1: Importing class from the module
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# Test Case 2: Trying to print the area without implementation
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+# Test Case 3: Trying to pass a non-integer argument
+>>> bg.integer_validator("name", "5")
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+# Test Case 4: Trying to pass a boolean value
+>>> bg.integer_validator("name", True)
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+# Test Case 5: Trying to pass a negative value
+>>> bg.integer_validator("name", -5)
+Traceback (most recent call last):
+    ...
+ValueError: name must be greater than 0
+
+# Test Case 6: Trying to pass a zero value
+>>> bg.integer_validator("name", 0)
+Traceback (most recent call last):
+    ...
+ValueError: name must be greater than 0
+
+# Test Case 7: Passing a positive value should not raise any exceptions
+>>> bg.integer_validator("name", 5)
+
+# Test Case 8: Passing one argument to integer_validator should raise TypeError
+>>> bg.integer_validator("name")
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+# Additional Test Cases Based on Your Request
+# These cover various invalid inputs and ensure the method behaves as expected
+
+# Test Case 9: Passing tuple to method
+>>> bg.integer_validator("age", (4,))
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+# Test Case 10: Passing list to method
+>>> bg.integer_validator("age", [3])
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+# Test Case 11: Passing dict to method
+>>> bg.integer_validator("age", {3:4})
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+# Test Case 12: Passing None to method
+>>> bg.integer_validator("age", None)
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
