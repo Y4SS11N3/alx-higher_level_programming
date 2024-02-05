@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Enhances the Square class with proper
+initialization and area calculation."""
 Rectangle = __import__('9-rectangle').Rectangle
 
 

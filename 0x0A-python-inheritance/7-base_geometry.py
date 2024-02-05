@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Extends BaseGeometry with integer validation."""
+
+
 class BaseGeometry:
     """A base geometry class with area and integer validation."""
     def area(self):

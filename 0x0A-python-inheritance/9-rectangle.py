@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Enhances the Rectangle class with width
+and height validation and area calculation."""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
