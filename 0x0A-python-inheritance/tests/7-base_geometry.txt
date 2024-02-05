@@ -1,41 +1,76 @@
-Importing class from the module:
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+# Test Case 1: Importing BaseGeometry class
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-Instantiate BaseGeometry:
-    >>> bg = BaseGeometry()
+# Test Case 2: Trying to invoke the area method (not implemented)
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
 
-Trying to print the area (should raise an Exception):
-    >>> bg.area()
-    Traceback (most recent call last):
-    ...
-    Exception: area() is not implemented
+# Test Case 3: Passing a non-integer argument to integer_validator
+>>> bg.integer_validator("name", "5")
+Traceback (most recent call last):
+TypeError: name must be an integer
 
-Passing integer to integer_validator (should not raise):
-    >>> bg.integer_validator("my_int", 12)
+# Test Case 4: Passing a boolean value to integer_validator
+>>> bg.integer_validator("name", True)
+Traceback (most recent call last):
+TypeError: name must be an integer
 
-Passing a string instead of integer (should raise TypeError):
-    >>> bg.integer_validator("name", "John")
-    Traceback (most recent call last):
-    ...
-    TypeError: name must be an integer
+# Test Case 5: Passing a negative value to integer_validator
+>>> bg.integer_validator("name", -5)
+Traceback (most recent call last):
+ValueError: name must be greater than 0
 
-Passing a boolean True (should raise TypeError because bool is a subclass of int but not considered a 'pure' integer here):
-    >>> bg.integer_validator("is_true", True)
-    Traceback (most recent call last):
-    ...
-    TypeError: is_true must be an integer
+# Test Case 6: Passing zero as value to integer_validator
+>>> bg.integer_validator("name", 0)
+Traceback (most recent call last):
+ValueError: name must be greater than 0
 
-Passing zero (should raise ValueError):
-    >>> bg.integer_validator("age", 0)
-    Traceback (most recent call last):
-    ...
-    ValueError: age must be greater than 0
+# Test Case 7: Successfully passing a positive value to integer_validator
+>>> bg.integer_validator("name", 5)
 
-Passing a negative integer (should raise ValueError):
-    >>> bg.integer_validator("distance", -4)
-    Traceback (most recent call last):
-    ...
-    ValueError: distance must be greater than 0
+# Test Case 8: Omitting the 'value' argument in integer_validator
+>>> bg.integer_validator("name")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-Passing a positive integer (should not raise):
-    >>> bg.integer_validator("width", 89)
+# Test Case 9: Calling integer_validator without any arguments
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+# Test Case 10: Passing three arguments to integer_validator
+>>> bg.integer_validator("name", 1, 2)
+Traceback (most recent call last):
+TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+# Test Case 11: Passing one argument to the area method
+>>> bg.area(5)
+Traceback (most recent call last):
+TypeError: area() takes 1 positional argument but 2 were given
+
+# Test Case 12: Passing two arguments to the area method
+>>> bg.area(5, 5)
+Traceback (most recent call last):
+TypeError: area() takes 1 positional argument but 3 were given
+
+# Test Case 13: Passing a tuple to integer_validator
+>>> bg.integer_validator("age", (4,))
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+# Test Case 14: Passing a list to integer_validator
+>>> bg.integer_validator("age", [3])
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+# Test Case 15: Passing a dictionary to integer_validator
+>>> bg.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+# Test Case 16: Passing None to integer_validator
+>>> bg.integer_validator("age", None)
+Traceback (most recent call last):
+TypeError: age must be an integer
