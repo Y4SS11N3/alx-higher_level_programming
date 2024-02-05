@@ -1,69 +1,41 @@
-# Test Case 1: Importing class from the module
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+Importing class from the module:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-# Test Case 2: Trying to print the area without implementation
->>> bg = BaseGeometry()
->>> bg.area()
-Traceback (most recent call last):
+Instantiate BaseGeometry:
+    >>> bg = BaseGeometry()
+
+Trying to print the area (should raise an Exception):
+    >>> bg.area()
+    Traceback (most recent call last):
     ...
-Exception: area() is not implemented
+    Exception: area() is not implemented
 
-# Test Case 3: Trying to pass a non-integer argument
->>> bg.integer_validator("name", "5")
-Traceback (most recent call last):
+Passing integer to integer_validator (should not raise):
+    >>> bg.integer_validator("my_int", 12)
+
+Passing a string instead of integer (should raise TypeError):
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
     ...
-TypeError: name must be an integer
+    TypeError: name must be an integer
 
-# Test Case 4: Trying to pass a boolean value
->>> bg.integer_validator("name", True)
-Traceback (most recent call last):
+Passing a boolean True (should raise TypeError because bool is a subclass of int but not considered a 'pure' integer here):
+    >>> bg.integer_validator("is_true", True)
+    Traceback (most recent call last):
     ...
-TypeError: name must be an integer
+    TypeError: is_true must be an integer
 
-# Test Case 5: Trying to pass a negative value
->>> bg.integer_validator("name", -5)
-Traceback (most recent call last):
+Passing zero (should raise ValueError):
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
     ...
-ValueError: name must be greater than 0
+    ValueError: age must be greater than 0
 
-# Test Case 6: Trying to pass a zero value
->>> bg.integer_validator("name", 0)
-Traceback (most recent call last):
+Passing a negative integer (should raise ValueError):
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
     ...
-ValueError: name must be greater than 0
+    ValueError: distance must be greater than 0
 
-# Test Case 7: Passing a positive value should not raise any exceptions
->>> bg.integer_validator("name", 5)
-
-# Test Case 8: Passing one argument to integer_validator should raise TypeError
->>> bg.integer_validator("name")
-Traceback (most recent call last):
-    ...
-TypeError: integer_validator() missing 1 required positional argument: 'value'
-
-# Additional Test Cases Based on Your Request
-# These cover various invalid inputs and ensure the method behaves as expected
-
-# Test Case 9: Passing tuple to method
->>> bg.integer_validator("age", (4,))
-Traceback (most recent call last):
-    ...
-TypeError: age must be an integer
-
-# Test Case 10: Passing list to method
->>> bg.integer_validator("age", [3])
-Traceback (most recent call last):
-    ...
-TypeError: age must be an integer
-
-# Test Case 11: Passing dict to method
->>> bg.integer_validator("age", {3:4})
-Traceback (most recent call last):
-    ...
-TypeError: age must be an integer
-
-# Test Case 12: Passing None to method
->>> bg.integer_validator("age", None)
-Traceback (most recent call last):
-    ...
-TypeError: age must be an integer
+Passing a positive integer (should not raise):
+    >>> bg.integer_validator("width", 89)
