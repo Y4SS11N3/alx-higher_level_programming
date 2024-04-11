@@ -9,6 +9,7 @@ from sqlalchemy.ext.declarative import declarative_base
 mymetadata = MetaData()
 Base = declarative_base(metadata=mymetadata)
 
+
 class State(Base):
     """
     Represents a state with an id and name.
