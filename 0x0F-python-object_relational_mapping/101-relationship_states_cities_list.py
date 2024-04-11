@@ -9,7 +9,6 @@ from relationship_city import City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
 
-# Main execution
 if __name__ == "__main__":
     # Connect to the database
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
